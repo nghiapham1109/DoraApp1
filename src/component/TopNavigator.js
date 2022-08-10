@@ -9,6 +9,7 @@ import {
   FlatList,
   Image,
   findNodeHandle,
+  ScrollView,
 } from 'react-native';
 import Animated from 'react-native-reanimated';
 import {InterpolateConfig, interpolate} from 'react-native-reanimated';
@@ -33,12 +34,12 @@ const Tab = forwardRef(({item}, ref) => {
     <View ref={ref}>
       <Text
         style={{
-          color: '#4B7ECE',
+          color: '#2A64C4',
           fontSize: 20 / data.length,
           textTransform: 'uppercase',
           textAlign: 'center',
           padding: 20,
-          alignItems: 'center',
+          alignItems: 'flex-start',
         }}>
         {item.title}
       </Text>
@@ -64,7 +65,7 @@ const Indicator = ({measures, scrollX}) => {
         width: indicatorWidth,
         left: 0,
         backgroundColor: 'blue',
-        bottom: -1,
+        bottom: '10%',
         transform: [{translateX}],
       }}
     />
@@ -94,7 +95,8 @@ const Tabs = ({data, scrollX}) => {
     });
   }, [data]);
   return (
-    <View style={{position: 'absolute', top: '-2%', width}}>
+    <View style={{position: 'absolute', top: '-1%', width}}>
+      {/* <ScrollView horizontal> </ScrollView> */}
       <View
         ref={containerRef}
         style={{

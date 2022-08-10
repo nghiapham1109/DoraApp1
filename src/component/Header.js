@@ -13,6 +13,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 0.1,
     width: '100%',
     backgroundColor: 'white',
   },
