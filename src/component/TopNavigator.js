@@ -35,7 +35,7 @@ const Tab = forwardRef(({item}, ref) => {
       <Text
         style={{
           color: '#2A64C4',
-          fontSize: 20 / data.length,
+          fontSize: 30 / data.length,
           textTransform: 'uppercase',
           textAlign: 'center',
           padding: 20,
@@ -95,7 +95,12 @@ const Tabs = ({data, scrollX}) => {
     });
   }, [data]);
   return (
-    <View style={{position: 'absolute', top: '-1%', width}}>
+    <View
+      style={{
+        position: 'absolute',
+        top: '-1%',
+        width,
+      }}>
       {/* <ScrollView horizontal> </ScrollView> */}
       <View
         ref={containerRef}

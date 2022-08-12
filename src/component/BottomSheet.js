@@ -11,7 +11,7 @@ import Animated, {
 import Information from './Information';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
-const MIN_TRANSLATE_Y = SCREEN_HEIGHT / 10;
+const MIN_TRANSLATE_Y = -SCREEN_HEIGHT / 10;
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 75;
 
 export default function BottomSheet({children}) {
@@ -28,20 +28,20 @@ export default function BottomSheet({children}) {
     })
     .onEnd(() => {
       if (translateY.value > -SCREEN_HEIGHT / 5) {
-        translateY.value = withSpring(-MIN_TRANSLATE_Y, {damping: 50});
+        translateY.value = withSpring(MIN_TRANSLATE_Y, {damping: 50});
       } else if (translateY.value < -SCREEN_HEIGHT / 2) {
         translateY.value = withSpring(MAX_TRANSLATE_Y, {damping: 50});
       }
     })
     .onUpdate(event => {
       translateY.value = event.translationY + context.value.y;
-      translateY.value = Math.max(translateY.value, -SCREEN_HEIGHT);
+      translateY.value = Math.max(translateY.value, -SCREEN_HEIGHT + 70);
     });
   const rBottomSheetStyle = useAnimatedStyle(() => {
     const borderRadius = interpolate(
       translateY.value,
-      [MAX_TRANSLATE_Y + 140, MAX_TRANSLATE_Y],
-      [25, 10],
+      [MAX_TRANSLATE_Y + 50, MAX_TRANSLATE_Y],
+      [25, 5],
       Extrapolate.CLAMP,
     );
 
@@ -51,17 +51,17 @@ export default function BottomSheet({children}) {
     };
   });
 
-  const marginBottomSheetStyle = useAnimatedStyle(() => {
-    if (translateY.value === -MIN_TRANSLATE_Y) {
-      return {
-        paddingBottom: (SCREEN_HEIGHT * 5) / 6,
-      };
-    } else {
-      return {
-        paddingBottom: 0,
-      };
-    }
-  });
+  // const marginBottomSheetStyle = useAnimatedStyle(() => {
+  //   if (translateY.value === -MIN_TRANSLATE_Y) {
+  //     return {
+  //       paddingBottom: (SCREEN_HEIGHT * 5) / 6,
+  //     };
+  //   } else {
+  //     return {
+  //       paddingBottom: 0,
+  //     };
+  //   }
+  // });
 
   return (
     <GestureDetector gesture={gesture}>
@@ -69,7 +69,7 @@ export default function BottomSheet({children}) {
         style={[
           styles.bottomSheetContainer,
           rBottomSheetStyle,
-          marginBottomSheetStyle,
+          // marginBottomSheetStyle,
         ]}>
         <View style={styles.line} />
         <View style={{flex: 1}}>

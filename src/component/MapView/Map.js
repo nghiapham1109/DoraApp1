@@ -5,8 +5,8 @@ import MapViewDirections from 'react-native-maps-directions';
 const Map = () => {
   const [state, setState] = useState({
     pickupCords: {
-      latitude: 16.047079,
-      longitude: 108.20623,
+      latitude: 21.028511,
+      longitude: 105.804817,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     },
