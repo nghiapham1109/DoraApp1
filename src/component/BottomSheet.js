@@ -9,6 +9,7 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 import Information from './Information';
+import DogInformation from './DogInformation';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 const MIN_TRANSLATE_Y = -SCREEN_HEIGHT / 10;
@@ -74,7 +75,8 @@ export default function BottomSheet({children}) {
         <View style={styles.line} />
         <View style={{flex: 1}}>
           <Text style={styles.header}>Previous Walk</Text>
-          <Information />
+          {/* <Information /> */}
+          <DogInformation />
         </View>
       </Animated.View>
     </GestureDetector>

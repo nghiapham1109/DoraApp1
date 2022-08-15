@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   nextButton: {
     position: 'absolute',
-    top: '50%',
+    top: '40%',
     marginLeft: '90%',
   },
 });
